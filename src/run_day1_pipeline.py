@@ -129,13 +129,17 @@ def generate_data_quality_report(
             "## Limitations",
             "",
             "- Day 1 focuses on familiarization, profiling, cleaning, and storage only.",
+            "- The Stockholm calendar dataset contains 100% missing values for price and adjusted_price in the raw source file. Therefore, calendar-based pricing analysis such as monthly price trends and weekday vs weekend price comparison cannot be performed using calendar data. Calendar data will be used for availability analysis only, while pricing analysis will use the listings dataset price field.",
             "- Text fields such as review comments and amenities are not deeply parsed yet.",
             "- No feature engineering, modeling, orchestration, or dashboarding is included yet.",
             "",
             "## Next Steps for Day 2",
             "",
             "- Explore relationships between listings, calendar availability, reviews, and neighbourhoods.",
-            "- Add focused visualizations for price, availability, room type, and review patterns.",
+            "- Use `listings_clean.price` for pricing analysis.",
+            "- Use `calendar_clean` only for availability analysis.",
+            "- Do not plan calendar-based price analysis unless a future dataset version includes calendar prices.",
+            "- Add focused visualizations for listing price, availability, room type, and review patterns.",
             "- Decide on analysis-ready features for later ML without training a model yet.",
             "- Add lightweight tests for key cleaning functions.",
         ]
@@ -196,6 +200,14 @@ def _validation_lines(cleaned_datasets: dict[str, pd.DataFrame], cleaned_profile
     calendar = cleaned_datasets.get("calendar", pd.DataFrame())
     if not calendar.empty:
         lines.append(f"- calendar: invalid calendar prices flagged: {_true_count(calendar, 'invalid_price')}.")
+        if {"price", "adjusted_price"}.issubset(calendar.columns):
+            price_missing_pct = calendar["price"].isna().mean() * 100
+            adjusted_price_missing_pct = calendar["adjusted_price"].isna().mean() * 100
+            if price_missing_pct == 100 and adjusted_price_missing_pct == 100:
+                lines.append(
+                    "- calendar: raw `price` and `adjusted_price` are 100.0% missing, so calendar pricing "
+                    "analysis is not available from this Stockholm source file."
+                )
 
     reviews = cleaned_datasets.get("reviews", pd.DataFrame())
     if not reviews.empty and "date" in reviews.columns:

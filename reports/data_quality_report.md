@@ -884,6 +884,7 @@ Selected city: Stockholm, Sweden
 - listings: invalid longitude values flagged: 0.
 - listings: invalid listing prices flagged: 0.
 - calendar: invalid calendar prices flagged: 0.
+- calendar: raw `price` and `adjusted_price` are 100.0% missing, so calendar pricing analysis is not available from this Stockholm source file.
 - reviews: rows with unparseable or missing review dates: 0.
 - date fields are converted with invalid parses set to null for later review.
 
@@ -924,12 +925,16 @@ Selected city: Stockholm, Sweden
 ## Limitations
 
 - Day 1 focuses on familiarization, profiling, cleaning, and storage only.
+- The Stockholm calendar dataset contains 100% missing values for price and adjusted_price in the raw source file. Therefore, calendar-based pricing analysis such as monthly price trends and weekday vs weekend price comparison cannot be performed using calendar data. Calendar data will be used for availability analysis only, while pricing analysis will use the listings dataset price field.
 - Text fields such as review comments and amenities are not deeply parsed yet.
 - No feature engineering, modeling, orchestration, or dashboarding is included yet.
 
 ## Next Steps for Day 2
 
 - Explore relationships between listings, calendar availability, reviews, and neighbourhoods.
-- Add focused visualizations for price, availability, room type, and review patterns.
+- Use `listings_clean.price` for pricing analysis.
+- Use `calendar_clean` only for availability analysis.
+- Do not plan calendar-based price analysis unless a future dataset version includes calendar prices.
+- Add focused visualizations for listing price, availability, room type, and review patterns.
 - Decide on analysis-ready features for later ML without training a model yet.
 - Add lightweight tests for key cleaning functions.
