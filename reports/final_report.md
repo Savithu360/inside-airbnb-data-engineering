@@ -118,6 +118,8 @@ The best model by MAE is Gradient Boosting Regressor. This is only a baseline an
 
 Completed work prioritizes correctness, reproducibility, and clear interpretation. Remaining future work could include cross-validation, richer feature engineering, additional hypothesis tests, and a dashboard. These were not prioritized because the assignment benefits more from a clean end-to-end baseline than from over-engineered tooling.
 
+I prioritized a clean, reproducible end-to-end workflow over adding advanced tools, because reliable data preparation and transparent assumptions are the foundation for later analytics and ML work.
+
 ## 12. Reproducibility Instructions
 
 Download the Stockholm Inside Airbnb raw files and place them in `data/raw`:

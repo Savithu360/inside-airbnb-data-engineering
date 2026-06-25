@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 
 from clean import clean_all_datasets
-from config import CITY_NAME, DATABASE_PATH, PROCESSED_DIR, PROCESSED_FILES, RAW_FILES, REPORT_PATH, REPORTS_DIR
+from config import CITY_NAME, DATABASE_PATH, PROCESSED_DIR, PROCESSED_FILES, PROJECT_ROOT, RAW_FILES, REPORT_PATH, REPORTS_DIR
 from database import save_to_sqlite
 from ingest import load_raw_datasets
 from profile_data import profile_datasets
@@ -65,7 +65,12 @@ def generate_data_quality_report(
 
     for name, path in RAW_FILES.items():
         status = "found" if path.exists() else "missing"
-        lines.append(f"- {name}: `{path.as_posix()}` ({status})")
+        lines.append(f"- {name}: `{project_relative_path(path)}` ({status})")
+
+    lines.extend(["", "## Processed Outputs", ""])
+    for name, path in PROCESSED_FILES.items():
+        lines.append(f"- {name}: `{project_relative_path(path)}`")
+    lines.append(f"- sqlite_database: `{project_relative_path(DATABASE_PATH)}`")
 
     lines.extend(
         [
@@ -146,6 +151,11 @@ def generate_data_quality_report(
     )
 
     REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")
+
+
+def project_relative_path(path) -> str:
+    """Return a stable project-relative path for reports."""
+    return path.resolve().relative_to(PROJECT_ROOT).as_posix()
 
 
 def _schema_section(name: str, profile: dict) -> list[str]:

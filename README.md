@@ -38,6 +38,7 @@ inside-airbnb-data-engineering/
 |   |-- statistical_report.md
 |   |-- ml_experiment_report.md
 |   |-- final_report.md
+|   |-- final_report.pdf
 |   `-- ai_usage_disclosure.md
 |-- src/
 |   |-- config.py
@@ -97,6 +98,7 @@ Day 3 creates:
 - `reports/statistical_report.md`
 - `reports/ml_experiment_report.md`
 - `reports/final_report.md`
+- `reports/final_report.pdf`
 - `reports/ai_usage_disclosure.md`
 - `reports/figures/ml_model_comparison.png`
 - `reports/figures/ml_feature_importance.png`
@@ -137,6 +139,12 @@ Day 3 creates:
 
 Reports, notebooks, source code, README, requirements, and generated report figures are intended to be included in the repository.
 
+## Primary Submission Files
+
+- `reports/final_report.pdf`
+- `reports/ai_usage_disclosure.md`
+- `README.md`
+
 ## Main Reports
 
 - Data quality report: `reports/data_quality_report.md`
@@ -144,6 +152,7 @@ Reports, notebooks, source code, README, requirements, and generated report figu
 - Statistical report: `reports/statistical_report.md`
 - ML experiment report: `reports/ml_experiment_report.md`
 - Final report: `reports/final_report.md`
+- Final report PDF: `reports/final_report.pdf`
 - AI usage disclosure: `reports/ai_usage_disclosure.md`
 
 ## AI Usage Note

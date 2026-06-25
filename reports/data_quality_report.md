@@ -1,15 +1,23 @@
 # Day 1 Data Quality Report
 
-Generated at: 2026-06-24 20:46:54
+Generated at: 2026-06-25 14:07:08
 
 Selected city: Stockholm, Sweden
 
 ## Raw Files Used
 
-- listings: `C:/Users/Savithu/Documents/inside-airbnb-data-engineering/data/raw/listings.csv.gz` (found)
-- calendar: `C:/Users/Savithu/Documents/inside-airbnb-data-engineering/data/raw/calendar.csv.gz` (found)
-- reviews: `C:/Users/Savithu/Documents/inside-airbnb-data-engineering/data/raw/reviews.csv.gz` (found)
-- neighbourhoods: `C:/Users/Savithu/Documents/inside-airbnb-data-engineering/data/raw/neighbourhoods.csv` (found)
+- listings: `data/raw/listings.csv.gz` (found)
+- calendar: `data/raw/calendar.csv.gz` (found)
+- reviews: `data/raw/reviews.csv.gz` (found)
+- neighbourhoods: `data/raw/neighbourhoods.csv` (found)
+
+## Processed Outputs
+
+- listings: `data/processed/listings_clean.csv`
+- calendar: `data/processed/calendar_clean.csv`
+- reviews: `data/processed/reviews_clean.csv`
+- neighbourhoods: `data/processed/neighbourhoods_clean.csv`
+- sqlite_database: `data/processed/airbnb_stockholm.db`
 
 ## Dataset Summary
 

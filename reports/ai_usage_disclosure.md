@@ -29,7 +29,7 @@ AI was used as a coding and mentoring assistant to help structure the project, w
 
 ## Manual Changes Made
 
-- The selected city was corrected from Amsterdam to Stockholm.
+- The selected city configuration and documentation were reviewed and corrected for Stockholm consistency.
 - The calendar price limitation was explicitly documented.
 - Reports were polished for clarity and business interpretation.
 - The final wording and scope were reviewed for assignment suitability.

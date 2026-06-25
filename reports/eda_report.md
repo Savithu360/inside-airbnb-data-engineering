@@ -130,7 +130,7 @@ Business interpretation: Review scores are generally useful for quality position
 
 ![Price vs reviews](figures/price_vs_reviews.png)
 
-Finding: The scatter plot compares listing price with review volume using `listings_clean.price` only.
+Finding: The scatter plot compares listing price with review volume using listings prices only.
 
 Business interpretation: Review count can act as a rough demand or listing-age signal, but it is not the same as booking volume. Strong claims should wait for statistical testing.
 
@@ -166,6 +166,7 @@ Business interpretation: Reviews are delayed and incomplete compared with bookin
 - Segment pricing benchmarks by room type before comparing listings, because entire homes, private rooms, and shared rooms represent different products.
 - Use neighbourhood-level median prices as local benchmarks, but compare neighbourhoods together with room type and property type to avoid misleading pricing conclusions.
 - Use `calendar_clean` for availability analysis only. Interpret availability carefully because unavailable dates may reflect bookings, host blocks, or inactive inventory.
+- Use ML results as directional support only, not automated pricing decisions.
 - Keep the calendar price limitation visible in any presentation or interview discussion, especially when explaining why monthly price trends and weekday versus weekend pricing are not included.
 
 ## Next Steps for Day 3
