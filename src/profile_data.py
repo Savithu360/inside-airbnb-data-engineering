@@ -1,4 +1,4 @@
-"""Simple dataset profiling helpers for Day 1 familiarization."""
+"""Simple dataset profiling helpers for Phase 1 familiarization."""
 
 from typing import Any
 

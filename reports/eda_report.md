@@ -1,12 +1,12 @@
-# Day 2 Exploratory Data Analysis Report
+# Phase 2 Exploratory Data Analysis Report
 
 Selected city: Stockholm, Sweden
 
 Data source: Inside Airbnb
 
-## Day 2 EDA Scope
+## Phase 2 EDA Scope
 
-This report explores the cleaned Stockholm Inside Airbnb data from the Day 1 SQLite database. The focus is business-friendly analysis of listings, listing prices, availability, hosts, and reviews. No machine learning is included in Day 2.
+This report explores the cleaned Stockholm Inside Airbnb data from the Phase 1 SQLite database. The focus is business-friendly analysis of listings, listing prices, availability, hosts, and reviews. Machine learning is handled separately in the Phase 2 ML baseline script.
 
 ## Important Dataset Limitation
 
@@ -116,7 +116,7 @@ Host portfolio segmentation:
 
 Finding: `single-listing hosts` have the highest median listing price at 1,339.50.
 
-Business interpretation: Host portfolio size may be related to pricing strategy. This does not prove causation, but it is a useful segmentation for Day 3 statistical testing.
+Business interpretation: Host portfolio size may be related to pricing strategy. This does not prove causation, but it is a useful segmentation for Phase 2 statistical testing.
 
 ### Review Score Distribution
 
@@ -169,9 +169,9 @@ Business interpretation: Reviews are delayed and incomplete compared with bookin
 - Use ML results as directional support only, not automated pricing decisions.
 - Keep the calendar price limitation visible in any presentation or interview discussion, especially when explaining why monthly price trends and weekday versus weekend pricing are not included.
 
-## Next Steps for Day 3
+## Follow-Up Analysis Steps
 
 - Perform simple statistical tests for price differences by room type and host segment.
 - Build a simple ML baseline only after defining a clear target and feature table.
 - Add reusable SQL queries for common analysis metrics.
-- Validate whether missing listing prices should be excluded or handled explicitly in Day 3 analysis.
+- Validate whether missing listing prices should be excluded or handled explicitly in later analysis.

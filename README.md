@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project is a data engineering and analytics workflow for the Inside Airbnb Stockholm dataset. It demonstrates a simple, reproducible pipeline for data ingestion, profiling, cleaning, validation, exploratory data analysis, statistical testing, and a baseline machine learning experiment.
+This project is a data engineering and analytics workflow for the Inside Airbnb Stockholm dataset. It is structured into two workflow phases: a data engineering pipeline phase, followed by an analysis, statistical testing, ML baseline, and reporting phase.
 
 Selected city: Stockholm, Sweden
 
@@ -10,7 +10,7 @@ Dataset source: Inside Airbnb
 
 ## Important Data Note
 
-Users must download the Stockholm Inside Airbnb raw files before running Day 1 and place them in `data/raw`:
+Users must download the Stockholm Inside Airbnb raw files before running Phase 1 and place them in `data/raw`:
 
 - `listings.csv.gz`
 - `calendar.csv.gz`
@@ -46,10 +46,10 @@ inside-airbnb-data-engineering/
 |   |-- profile_data.py
 |   |-- clean.py
 |   |-- database.py
-|   |-- run_day1_pipeline.py
-|   |-- run_day2_eda.py
-|   |-- run_day3_statistics.py
-|   `-- run_day3_ml.py
+|   |-- run_phase1_pipeline.py
+|   |-- run_phase2_eda.py
+|   |-- run_phase2_statistics.py
+|   `-- run_phase2_ml.py
 |-- README.md
 |-- requirements.txt
 `-- .gitignore
@@ -70,72 +70,57 @@ pip install -r requirements.txt
 Run these commands from the project root:
 
 ```bash
-python src/run_day1_pipeline.py
-python src/run_day2_eda.py
-python src/run_day3_statistics.py
-python src/run_day3_ml.py
+python src/run_phase1_pipeline.py
+python src/run_phase2_eda.py
+python src/run_phase2_statistics.py
+python src/run_phase2_ml.py
 ```
 
 ## Expected Outputs
 
-Day 1 creates:
+Phase 1 creates:
 
-- `data/processed/listings_clean.csv`
-- `data/processed/calendar_clean.csv`
-- `data/processed/reviews_clean.csv`
-- `data/processed/neighbourhoods_clean.csv`
-- `data/processed/airbnb_stockholm.db`
-- `reports/data_quality_report.md`
+- Processed CSV files in `data/processed/`
+- SQLite database: `data/processed/airbnb_stockholm.db`
+- Data quality report: `reports/data_quality_report.md`
 
-Day 2 creates:
+Phase 2 creates:
 
-- `reports/eda_report.md`
-- PNG charts in `reports/figures/`
-- `notebooks/02_exploratory_data_analysis.ipynb`
+- EDA report: `reports/eda_report.md`
+- EDA figures in `reports/figures/`
+- Statistical report: `reports/statistical_report.md`
+- ML experiment report: `reports/ml_experiment_report.md`
+- Final report: `reports/final_report.md`
+- Final report PDF: `reports/final_report.pdf`
+- AI usage disclosure: `reports/ai_usage_disclosure.md`
+- Notebooks and ML figures
 
-Day 3 creates:
+## Phase 1: Data Engineering Pipeline
 
-- `reports/statistical_report.md`
-- `reports/ml_experiment_report.md`
-- `reports/final_report.md`
-- `reports/final_report.pdf`
-- `reports/ai_usage_disclosure.md`
-- `reports/figures/ml_model_comparison.png`
-- `reports/figures/ml_feature_importance.png`
-- `notebooks/03_statistical_analysis.ipynb`
-- `notebooks/04_price_prediction_baseline.ipynb`
+Completed work:
 
-## Day 1 Completed Scope
+- Raw data ingestion
+- Profiling
+- Cleaning
+- Validation
+- Processed CSV generation
+- SQLite database creation
+- Data quality report
 
-- Loaded the raw listings, calendar, reviews, and neighbourhoods files.
-- Profiled row counts, column counts, column names, data types, missing values, duplicate rows, sample values, and numeric summaries.
-- Cleaned important listing, calendar, review, and neighbourhood fields.
-- Added validation flags for invalid prices and coordinate ranges.
-- Saved analysis-ready CSV outputs.
-- Created a SQLite database with cleaned tables.
-- Generated a Markdown data quality report.
+## Phase 2: Analysis, Statistical Testing, ML Baseline, and Reporting
 
-## Day 2 Completed Scope
+Completed work:
 
-- Loaded cleaned data from `data/processed/airbnb_stockholm.db`.
-- Used SQL queries and selected only required calendar columns for availability analysis.
-- Generated charts for room type, listing price, neighbourhood price, property type, calendar availability, hosts, and reviews.
-- Wrote the Day 2 EDA report to `reports/eda_report.md`.
-- Saved PNG figures to `reports/figures/`.
-- Used `listings_clean.price` for pricing analysis because calendar prices are missing.
-- Used `calendar_clean` only for availability analysis.
-
-## Day 3 Completed Scope
-
-- Ran Mann-Whitney U tests for room type prices, superhost review scores, and price by review-volume group.
-- Ran a Kruskal-Wallis test for neighbourhood price differences.
-- Built a simple listing price prediction baseline using median baseline, linear regression, random forest, and gradient boosting models.
-- Saved ML comparison and feature-importance figures.
-- Created final report and AI usage disclosure.
+- Exploratory data analysis
+- Figures and EDA report
+- Statistical testing
+- Simple ML baseline
+- Final report
+- AI usage disclosure
 
 ## Git And Data Files
 
-`data/raw` and `data/processed` are ignored by Git. This keeps large raw and generated data files out of the repository. A reviewer should download the raw Stockholm Inside Airbnb files, place them in `data/raw`, and run the commands above to reproduce the processed outputs.
+`data/raw` and `data/processed` are ignored by Git. This keeps large raw and generated data files out of the repository. A reviewer should download the raw Stockholm Inside Airbnb files, place them in `data/raw`, and run the commands above to reproduce the processed outputs locally.
 
 Reports, notebooks, source code, README, requirements, and generated report figures are intended to be included in the repository.
 

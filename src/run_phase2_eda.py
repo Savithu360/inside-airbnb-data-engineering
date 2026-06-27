@@ -1,4 +1,4 @@
-"""Run Day 2 exploratory data analysis for the Stockholm Inside Airbnb data."""
+"""Run Phase 2 exploratory data analysis for the Stockholm Inside Airbnb data."""
 
 import os
 import sqlite3
@@ -21,13 +21,13 @@ DATA_SOURCE = "Inside Airbnb"
 
 def main() -> None:
     """Load processed data from SQLite, create figures, and write the EDA report."""
-    print("Starting Day 2 EDA")
+    print("Starting Phase 2 EDA")
     print(f"Selected city: {CITY_NAME}")
     print(f"Reading SQLite database: {DATABASE_PATH}")
 
     if not DATABASE_PATH.exists():
         raise FileNotFoundError(
-            f"SQLite database not found at {DATABASE_PATH}. Run python src/run_day1_pipeline.py first."
+            f"SQLite database not found at {DATABASE_PATH}. Run python src/run_phase1_pipeline.py first."
         )
 
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
@@ -47,13 +47,13 @@ def main() -> None:
     print("[REPORT] Writing EDA report")
     write_eda_report(metrics, analysis, figure_paths)
 
-    print("Day 2 EDA completed successfully")
+    print("Phase 2 EDA completed successfully")
     print(f"EDA report saved to: {EDA_REPORT_PATH}")
     print(f"Figures saved to: {FIGURES_DIR}")
 
 
 def load_listings(connection: sqlite3.Connection) -> pd.DataFrame:
-    """Load only the listing columns needed for Day 2 EDA."""
+    """Load only the listing columns needed for Phase 2 EDA."""
     query = """
         SELECT
             id,
@@ -491,17 +491,17 @@ def write_eda_report(metrics: dict[str, float], analysis: dict[str, pd.DataFrame
     top_review_neighbourhood = analysis["neighbourhood_review_scores"].iloc[0]
 
     lines = [
-        "# Day 2 Exploratory Data Analysis Report",
+        "# Phase 2 Exploratory Data Analysis Report",
         "",
         f"Selected city: {CITY_NAME}",
         "",
         f"Data source: {DATA_SOURCE}",
         "",
-        "## Day 2 EDA Scope",
+        "## Phase 2 EDA Scope",
         "",
-        "This report explores the cleaned Stockholm Inside Airbnb data from the Day 1 SQLite database. "
+        "This report explores the cleaned Stockholm Inside Airbnb data from the Phase 1 SQLite database. "
         "The focus is business-friendly analysis of listings, listing prices, availability, hosts, and reviews. "
-        "No machine learning is included in Day 2.",
+        "Machine learning is handled separately in the Phase 2 ML baseline script.",
         "",
         "## Important Dataset Limitation",
         "",
@@ -633,7 +633,7 @@ def write_eda_report(metrics: dict[str, float], analysis: dict[str, pd.DataFrame
         f"{highest_host_segment_price['median_price']:,.2f}.",
         "",
         "Business interpretation: Host portfolio size may be related to pricing strategy. This does not prove causation, "
-        "but it is a useful segmentation for Day 3 statistical testing.",
+        "but it is a useful segmentation for Phase 2 statistical testing.",
         "",
         "### Review Score Distribution",
         "",
@@ -691,12 +691,12 @@ def write_eda_report(metrics: dict[str, float], analysis: dict[str, pd.DataFrame
         "- Use ML results as directional support only, not automated pricing decisions.",
         "- Keep the calendar price limitation visible in any presentation or interview discussion, especially when explaining why monthly price trends and weekday versus weekend pricing are not included.",
         "",
-        "## Next Steps for Day 3",
+        "## Follow-Up Analysis Steps",
         "",
         "- Perform simple statistical tests for price differences by room type and host segment.",
         "- Build a simple ML baseline only after defining a clear target and feature table.",
         "- Add reusable SQL queries for common analysis metrics.",
-        "- Validate whether missing listing prices should be excluded or handled explicitly in Day 3 analysis.",
+        "- Validate whether missing listing prices should be excluded or handled explicitly in later analysis.",
     ]
 
     EDA_REPORT_PATH.write_text("\n".join(lines), encoding="utf-8")

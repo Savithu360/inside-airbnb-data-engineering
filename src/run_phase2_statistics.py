@@ -1,4 +1,4 @@
-"""Run Day 3 statistical tests for the Stockholm Inside Airbnb project."""
+"""Run Phase 2 statistical tests for the Stockholm Inside Airbnb project."""
 
 import sqlite3
 from pathlib import Path
@@ -14,11 +14,11 @@ REPORT_PATH = REPORTS_DIR / "statistical_report.md"
 
 def main() -> None:
     """Load listing data, run statistical tests, and write a Markdown report."""
-    print("Starting Day 3 statistical analysis")
+    print("Starting Phase 2 statistical analysis")
     print(f"Selected city: {CITY_NAME}")
 
     if not DATABASE_PATH.exists():
-        raise FileNotFoundError(f"Database not found: {DATABASE_PATH}. Run Day 1 first.")
+        raise FileNotFoundError(f"Database not found: {DATABASE_PATH}. Run Phase 1 first.")
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     listings = load_listings()
@@ -35,7 +35,7 @@ def main() -> None:
 
 
 def load_listings() -> pd.DataFrame:
-    """Load only columns needed for Day 3 statistical tests."""
+    """Load only columns needed for Phase 2 statistical tests."""
     query = """
         SELECT
             id,
@@ -143,7 +143,7 @@ def write_report(listings: pd.DataFrame, results: dict) -> None:
     missing_score_pct = listings["review_scores_rating"].isna().mean() * 100
 
     lines = [
-        "# Day 3 Statistical Analysis Report",
+        "# Phase 2 Statistical Analysis Report",
         "",
         f"Selected city: {CITY_NAME}",
         "",
@@ -151,7 +151,7 @@ def write_report(listings: pd.DataFrame, results: dict) -> None:
         "",
         "## Scope",
         "",
-        "This report adds simple statistical tests to the Day 1 and Day 2 work. Tests use cleaned listing data from the SQLite database. Calendar price fields are not used because Stockholm calendar `price` and `adjusted_price` are 100% missing in the raw source data.",
+        "This report adds simple statistical tests to the Phase 1 and Phase 2 work. Tests use cleaned listing data from the SQLite database. Calendar price fields are not used because Stockholm calendar `price` and `adjusted_price` are 100% missing in the raw source data.",
         "",
         "## Important Notes",
         "",

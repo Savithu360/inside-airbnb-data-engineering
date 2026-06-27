@@ -1,6 +1,6 @@
-# Day 1 Data Quality Report
+# Phase 1 Data Quality Report
 
-Generated at: 2026-06-25 14:07:08
+Generated at: 2026-06-27 11:16:26
 
 Selected city: Stockholm, Sweden
 
@@ -928,16 +928,16 @@ Selected city: Stockholm, Sweden
 - Raw files are the Stockholm Inside Airbnb CSV files placed in `data/raw`.
 - Currency fields are assumed to represent listing prices in the source dataset's currency format.
 - Percentage fields are stored as numeric values from 0 to 100 after removing `%`.
-- Rows are retained during Day 1 cleaning; invalid values are flagged instead of dropped.
+- Rows are retained during Phase 1 cleaning; invalid values are flagged instead of dropped.
 
 ## Limitations
 
-- Day 1 focuses on familiarization, profiling, cleaning, and storage only.
+- Phase 1 focuses on familiarization, profiling, cleaning, and storage only.
 - The Stockholm calendar dataset contains 100% missing values for price and adjusted_price in the raw source file. Therefore, calendar-based pricing analysis such as monthly price trends and weekday vs weekend price comparison cannot be performed using calendar data. Calendar data will be used for availability analysis only, while pricing analysis will use the listings dataset price field.
 - Text fields such as review comments and amenities are not deeply parsed yet.
 - No feature engineering, modeling, orchestration, or dashboarding is included yet.
 
-## Next Steps for Day 2
+## Next Steps for Phase 2
 
 - Explore relationships between listings, calendar availability, reviews, and neighbourhoods.
 - Use `listings_clean.price` for pricing analysis.

@@ -1,4 +1,4 @@
-# Day 3 ML Baseline Experiment Report
+# Phase 2 ML Baseline Experiment Report
 
 Selected city: Stockholm, Sweden
 

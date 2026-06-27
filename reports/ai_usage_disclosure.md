@@ -8,10 +8,10 @@
 ## Sections Assisted by AI
 
 - Project structure planning
-- Day 1 pipeline scaffolding and code review
+- Phase 1 pipeline scaffolding and code review
 - Data quality report drafting
-- Day 2 EDA script and report drafting
-- Day 3 statistical testing and ML baseline implementation
+- Phase 2 EDA script and report drafting
+- Phase 2 statistical testing and ML baseline implementation
 - README and reproducibility documentation
 - Final report organization
 

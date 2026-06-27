@@ -1,4 +1,4 @@
-"""Run the Day 1 Inside Airbnb data engineering pipeline."""
+"""Run the Phase 1 Inside Airbnb data engineering pipeline."""
 
 from datetime import datetime
 
@@ -13,7 +13,7 @@ from profile_data import profile_datasets
 
 def main() -> None:
     """Orchestrate loading, profiling, cleaning, saving, and reporting."""
-    print("Starting Day 1 Inside Airbnb pipeline")
+    print("Starting Phase 1 Inside Airbnb pipeline")
     print(f"Selected city: {CITY_NAME}")
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
@@ -30,7 +30,7 @@ def main() -> None:
     save_to_sqlite(cleaned_datasets, DATABASE_PATH)
     generate_data_quality_report(raw_profiles, cleaned_profiles, cleaning_actions, cleaned_datasets)
 
-    print("Day 1 pipeline completed successfully")
+    print("Phase 1 pipeline completed successfully")
     print(f"Processed files saved in: {PROCESSED_DIR}")
     print(f"SQLite database saved to: {DATABASE_PATH}")
     print(f"Data quality report saved to: {REPORT_PATH}")
@@ -53,7 +53,7 @@ def generate_data_quality_report(
     """Create a Markdown data quality report from actual profile results."""
     generated_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     lines = [
-        "# Day 1 Data Quality Report",
+        "# Phase 1 Data Quality Report",
         "",
         f"Generated at: {generated_at}",
         "",
@@ -129,16 +129,16 @@ def generate_data_quality_report(
             "- Raw files are the Stockholm Inside Airbnb CSV files placed in `data/raw`.",
             "- Currency fields are assumed to represent listing prices in the source dataset's currency format.",
             "- Percentage fields are stored as numeric values from 0 to 100 after removing `%`.",
-            "- Rows are retained during Day 1 cleaning; invalid values are flagged instead of dropped.",
+            "- Rows are retained during Phase 1 cleaning; invalid values are flagged instead of dropped.",
             "",
             "## Limitations",
             "",
-            "- Day 1 focuses on familiarization, profiling, cleaning, and storage only.",
+            "- Phase 1 focuses on familiarization, profiling, cleaning, and storage only.",
             "- The Stockholm calendar dataset contains 100% missing values for price and adjusted_price in the raw source file. Therefore, calendar-based pricing analysis such as monthly price trends and weekday vs weekend price comparison cannot be performed using calendar data. Calendar data will be used for availability analysis only, while pricing analysis will use the listings dataset price field.",
             "- Text fields such as review comments and amenities are not deeply parsed yet.",
             "- No feature engineering, modeling, orchestration, or dashboarding is included yet.",
             "",
-            "## Next Steps for Day 2",
+            "## Next Steps for Phase 2",
             "",
             "- Explore relationships between listings, calendar availability, reviews, and neighbourhoods.",
             "- Use `listings_clean.price` for pricing analysis.",

@@ -1,4 +1,4 @@
-"""Run a simple Day 3 listing price prediction baseline."""
+"""Run a simple Phase 2 listing price prediction baseline."""
 
 import os
 import sqlite3
@@ -47,11 +47,11 @@ FEATURES = CATEGORICAL_FEATURES + NUMERIC_FEATURES
 
 def main() -> None:
     """Train simple baseline models and write an experiment report."""
-    print("Starting Day 3 ML baseline")
+    print("Starting Phase 2 ML baseline")
     print(f"Selected city: {CITY_NAME}")
 
     if not DATABASE_PATH.exists():
-        raise FileNotFoundError(f"Database not found: {DATABASE_PATH}. Run Day 1 first.")
+        raise FileNotFoundError(f"Database not found: {DATABASE_PATH}. Run Phase 1 first.")
 
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     listings = load_modeling_data()
@@ -252,7 +252,7 @@ def write_report(
     """Write the ML experiment report."""
     best_model = results.iloc[0]
     lines = [
-        "# Day 3 ML Baseline Experiment Report",
+        "# Phase 2 ML Baseline Experiment Report",
         "",
         f"Selected city: {CITY_NAME}",
         "",

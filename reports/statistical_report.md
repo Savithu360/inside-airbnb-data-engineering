@@ -1,4 +1,4 @@
-# Day 3 Statistical Analysis Report
+# Phase 2 Statistical Analysis Report
 
 Selected city: Stockholm, Sweden
 
@@ -6,7 +6,7 @@ Data source: Inside Airbnb
 
 ## Scope
 
-This report adds simple statistical tests to the Day 1 and Day 2 work. Tests use cleaned listing data from the SQLite database. Calendar price fields are not used because Stockholm calendar `price` and `adjusted_price` are 100% missing in the raw source data.
+This report adds simple statistical tests to the Phase 1 and Phase 2 work. Tests use cleaned listing data from the SQLite database. Calendar price fields are not used because Stockholm calendar `price` and `adjusted_price` are 100% missing in the raw source data.
 
 ## Important Notes
 

@@ -1,4 +1,4 @@
-"""Cleaning functions for the Day 1 processed Airbnb tables."""
+"""Cleaning functions for the Phase 1 processed Airbnb tables."""
 
 import re
 

@@ -1,4 +1,4 @@
-"""Project configuration for the Day 1 Airbnb data pipeline."""
+"""Project configuration for the Phase 1 Airbnb data pipeline."""
 
 from pathlib import Path
 
